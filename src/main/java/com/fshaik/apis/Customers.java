@@ -10,19 +10,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import com.fshaik.services.*;
+import com.fshaik.models.*;
 
-import com.fshaik.models.Customer;
 
 @RestController
 public class Customers {
-	@RequestMapping(value = "/customers", method=RequestMethod.GET)
-	public @ResponseBody List<String> Customer() {
-		/*Customer cust = new Customer();
-		ArrayList<Customer> custList = new  ArrayList<Customer>();
-		custList.add(cust);
-		cust.setId(1);
-		cust.setName("AWS"); */
-		return Arrays.asList("A","B","C");
+	@RequestMapping(value = "/customers", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody List<Customer> Customer() {
+		CustomerService customerService = new CustomerService();
+
+		return customerService.getCustomers();
 	}
 
 }
