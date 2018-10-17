@@ -25,7 +25,11 @@ public class CustomerService {
         cust.setName("Google");
         custList.add(cust);
 
+        cust = new Customer();
+        cust.setId(4);
+        cust.setName("OceanDigital");
         custList.add(cust);
+
     }
 
     public List<Customer> getCustomers() {
